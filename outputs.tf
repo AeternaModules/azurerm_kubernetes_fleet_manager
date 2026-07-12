@@ -1,3 +1,7 @@
+output "kubernetes_fleet_managers_id" {
+  description = "Map of id values across all kubernetes_fleet_managers, keyed the same as var.kubernetes_fleet_managers"
+  value       = { for k, v in azurerm_kubernetes_fleet_manager.kubernetes_fleet_managers : k => v.id }
+}
 output "kubernetes_fleet_managers_hub_profile" {
   description = "Map of hub_profile values across all kubernetes_fleet_managers, keyed the same as var.kubernetes_fleet_managers"
   value       = { for k, v in azurerm_kubernetes_fleet_manager.kubernetes_fleet_managers : k => v.hub_profile }
