@@ -4,7 +4,7 @@ output "kubernetes_fleet_managers_id" {
 }
 output "kubernetes_fleet_managers_hub_profile" {
   description = "Map of hub_profile values across all kubernetes_fleet_managers, keyed the same as var.kubernetes_fleet_managers"
-  value       = { for k, v in azurerm_kubernetes_fleet_manager.kubernetes_fleet_managers : k => v.hub_profile if v.hub_profile != null && length(v.hub_profile) > 0 }
+  value       = { for k, v in azurerm_kubernetes_fleet_manager.kubernetes_fleet_managers : k => one(v.hub_profile) if v.hub_profile != null && length(v.hub_profile) > 0 }
 }
 output "kubernetes_fleet_managers_location" {
   description = "Map of location values across all kubernetes_fleet_managers, keyed the same as var.kubernetes_fleet_managers"
